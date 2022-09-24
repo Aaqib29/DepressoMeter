@@ -29,6 +29,25 @@ class DepressionDetection:
         self.testData['label'].value_counts()
 
     def classify(processed_message,method):
+        my_file = open("./dataset/negative-words.txt", "r", encoding="ISO-8859-1")
+        content = my_file.read()
+        content_list = content.split("\n")
+        my_file.close()
+        #print(content_list)
+
+
+        #s1 = set(processed_message.split())
+        s1 = set(processed_message)
+        s2 = set(content_list)
+        s3 = s1.intersection(s2)
+        lst = list(s1)
+        if(len(lst)>5):
+            lst=lst[:5]
+        lst_str = '%20'.join(lst)
+        #print(lst_str)
+        
+        #print(link)
+
 
         pickle_in = open("data1.pickle","rb")
         prob_depressive = pickle.load(pickle_in)
@@ -62,9 +81,12 @@ class DepressionDetection:
             pDepressive += log(prob_depressive_tweet)
             pPositive += log(prob_positive_tweet)
         if pDepressive >= pPositive:
-            return 1
+            link = "https://jijeevishaorg.gitlab.io/?q="
+            link = link+lst_str
+            return 1,link
         else:
-            return 0
+            link = "https://jijeevishaorg.gitlab.io/"
+            return 0,link
 
     def metrics(self,labels, predictions):
         true_pos, true_neg, false_pos, false_neg = 0, 0, 0, 0
