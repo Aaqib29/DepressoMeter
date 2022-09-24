@@ -40,6 +40,8 @@ def predictSentiment():
     pm = process_message(message)
     result = DepressionDetection.classify(pm, 'bow') or DepressionDetection.classify(pm, 'tf-idf')
     return render_template("tweetresult.html",result=result)
+    # result, link = DepressionDetection.classify(pm, 'bow') or DepressionDetection.classify(pm, 'tf-idf')
+    # return render_template("tweetresult.html",result=result, url=link)
 
 
 @app.route('/predict', methods=["POST"])
