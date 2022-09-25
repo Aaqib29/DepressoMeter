@@ -10,3 +10,8 @@ The project is deployed on Docker. Use following commands to run it:
 ### Run the container  
 
 1. ```docker run -p 5000:5000 -d depressometer```  
+
+
+---  
+
+\* Use [this source](https://stackoverflow.com/questions/32302379/could-not-find-a-version-that-satisfies-the-requirement-package) to generate the `requirements.txt`.  
