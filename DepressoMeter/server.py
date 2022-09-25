@@ -74,5 +74,7 @@ def predict():
             result = 'Your Depression test result : Severe Depression'
     return render_template("result.html", result=result)
 
-app.secret_key = os.urandom(12)
-app.run(port=5987, host='0.0.0.0', debug=True)
+if __name__ == "__main__":
+    app.secret_key = os.urandom(12)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(port=port, host='0.0.0.0', debug=True)
