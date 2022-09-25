@@ -2,7 +2,7 @@
 FROM python:3.8-alpine
 
 # copy the requirements file into the image
-COPY ./DepressoMeter/requirements.txt /app/requirements.txt
+COPY ./DepressoMeter /app
 
 # switch working directory
 WORKDIR /app
